@@ -1,6 +1,6 @@
 class Board
     def initialize 
-        @board = Array.new(9, "a")
+        @board = Array.new(9, "")
     end
 
     def display ()
