@@ -7,7 +7,6 @@ game.start
 
 loop do 
     game.who_is_playing?
-    game.choose_position
     game.write_down_user_input
     game.check_winner
 
