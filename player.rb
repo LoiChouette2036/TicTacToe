@@ -1,6 +1,6 @@
 class Player
 
-    attr_accessor :number_of_win
+    attr_accessor :number_of_win, :marker
 
     def initialize (name,marker)
         @name = name
