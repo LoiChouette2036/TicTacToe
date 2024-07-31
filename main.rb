@@ -21,3 +21,4 @@ loop do
         puts "player 1 has #{@player1.number_of_win} win and player 2 has #{@player2.number_of_win} win, keep going"
     end
 end
+
