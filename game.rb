@@ -5,6 +5,14 @@ class Game
         @player2 = Player.new("Player 2", "O")
     end
 
+    def player1
+        @player1
+    end
+      
+    def player2
+        @player2
+    end
+
     def start 
         @board.display 
         puts "Let's the game begin !!!"
@@ -41,17 +49,19 @@ class Game
     end
 
     def check_winner
-        if ([@board[0],@board[1],@board[2]].all? {|element| element == @board[0]} || [@board[3],@board[4],@board[5]].all? {|element| element == @board[3]} || [@board[6],@board[7],@board[8]].all? {|element| element == @board[6]} || [@board[0],@board[4],@board[8]].all? {|element| element == @board[0]} || [@board[2],@board[4],@board[6]].all? {|element| element == @board[2]})
-            puts "someone has won"
-            if element == "X"
-                puts "player1 has won"
-                @player1.number_of_win += 1
+        winning_combinations = [
+            [0, 1, 2],[3, 4, 5], [6, 7, 8],
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],
+            [0, 4, 8], [2, 4, 6]
+        ]
+        
+        winning_combinations.each do |combination|
+            if combination.all?{|index| @board[index] == @current_player.marker}
+                puts "Player #{@current_player.marker == 'X'?1:2} has won"
+                @current_player.number_of_win +=1
             else
-                puts "player 2 has won"
-                @player2.number_of_win += 1
+                
             end
-        else
-            puts "nobody won"
         end
     end       
         

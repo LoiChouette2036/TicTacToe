@@ -10,14 +10,15 @@ loop do
     game.write_down_user_input
     game.check_winner
 
-    if @player1.number_of_win == 3
-        puts "Player 1 won !!"
+    if game.player1.number_of_win == 3
+        puts "Player 1 won !"
         break
-    elsif @player2.number_of_win == 3
-        puts "Player 2 won"
+    elsif game.player2.number_of_win == 3
+        puts "Player 2 won !"
         break
     else
-        puts "player 1 has #{@player1.number_of_win} win and player 2 has #{@player2.number_of_win} win, keep going"
+        puts "Player 1 has #{game.player1.number_of_win} win and Player 2 has #{game.player2.number_of_win} win, keep going"
     end
+    
 end
 
