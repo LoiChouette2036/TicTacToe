@@ -23,6 +23,11 @@ class Board
         end
     end
 
+    def full?
+        @board.all? { |element| element != "" }
+    end
+
+
 end
 
 

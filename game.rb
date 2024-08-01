@@ -19,18 +19,21 @@ class Game
     end
 
     def who_is_playing?
-        print "who's playing ?"
-        user_input = gets.chomp.to_i
+        valid_choices = [1,2]
+        choice = nil
 
-        if user_input == 1 
-            @current_player = @player1
-        else
-            @current_player = @player2
+        until valid_choices.include?(choice)
+            print "Player Number, Please choose between 1 and 2  "
+            choice = gets.chomp.to_i
         end
+
+        user_input = choice
+
+        @current_player = user_input == 1 ? @player1 : @player2
     end
-    
+
     def choose_position        
-        print "Choose between from 1 to 9, where you want to tick your marker"
+        print "Choose between from 1 to 9, where you want to tick your marker : "
         @position_wanted = gets.chomp.to_i
         puts "You entered the number: #{@position_wanted}"
     end
@@ -59,10 +62,23 @@ class Game
             if combination.all?{|index| @board[index] == @current_player.marker}
                 puts "Player #{@current_player.marker == 'X'?1:2} has won"
                 @current_player.number_of_win +=1
+                return true
             else
                 
             end
         end
     end       
+
+    def display_new_board
+        if @board.full?
+            @board = Board.new
+            puts "The board is full. starting a new game"
+            @board.display
+        elsif check_winner == true
+            @board = Board.new
+           puts "Starting a new game after win"
+           @board.display
+        end
         
+    end
 end
