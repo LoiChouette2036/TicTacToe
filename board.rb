@@ -35,4 +35,22 @@ class Board
 
 end
 
+##chatgpt improvment###
+
+#class Board
+    # Existing methods...
+
+#    def check_winner(marker)
+#        winning_combinations = [
+#            [0, 1, 2], [3, 4, 5], [6, 7, 8],
+#            [0, 3, 6], [1, 4, 7], [2, 5, 8],
+##            [0, 4, 8], [2, 4, 6]
+#        ]
+#        
+#        winning_combinations.any? do |combination|
+#            combination.all? { |index| @board[index] == marker }
+#        end
+#    end
+#end
+
 

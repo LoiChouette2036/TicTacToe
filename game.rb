@@ -91,3 +91,19 @@ class Game
         end
     end
 end
+
+
+####CHATGPT improvment#######
+#class Game
+    # Existing methods...
+
+#    def check_winner
+#        if @board.check_winner(@current_player.marker)
+#            puts "Player #{@current_player.marker == 'X' ? 1 : 2} has won"
+#            @current_player.number_of_win += 1            
+#            true
+#        else
+#            false
+#        end
+#    end
+#end
