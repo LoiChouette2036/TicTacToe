@@ -8,14 +8,7 @@ class Player
         @number_of_win = 0
     end
 
-    def winner?
-        if @number_of_win == 3 
-            puts " I won the Game !"
-            true
-        else
-            false
-        end
-    end
+ 
 end
 
 

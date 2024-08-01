@@ -33,8 +33,14 @@ class Game
     end
 
     def choose_position        
-        print "Choose between from 1 to 9, where you want to tick your marker : "
-        @position_wanted = gets.chomp.to_i
+        valid_choices = [1,2,3,4,5,6,7,8,9]
+        choice = nil
+
+        until valid_choices.include?(choice)
+            print "Choose between from 1 to 9, where you want to tick your marker : "
+            choice = gets.chomp.to_i
+        end
+        @position_wanted = choice
         puts "You entered the number: #{@position_wanted}"
     end
 
@@ -52,6 +58,7 @@ class Game
     end
 
     def check_winner
+
         winning_combinations = [
             [0, 1, 2],[3, 4, 5], [6, 7, 8],
             [0, 3, 6], [1, 4, 7], [2, 5, 8],
@@ -61,24 +68,26 @@ class Game
         winning_combinations.each do |combination|
             if combination.all?{|index| @board[index] == @current_player.marker}
                 puts "Player #{@current_player.marker == 'X'?1:2} has won"
-                @current_player.number_of_win +=1
+                @current_player.number_of_win +=1            
+                
                 return true
             else
-                
+                return false
             end
         end
+
     end       
 
-    def display_new_board
-        if @board.full?
-            @board = Board.new
-            puts "The board is full. starting a new game"
-            @board.display
-        elsif check_winner == true
-            @board = Board.new
-           puts "Starting a new game after win"
-           @board.display
+    def display_new_board 
+        if @board.no_empty_slots?
+            puts "Y en plus"
+        else
+            winner = check_winner # Call check_winner once and store the result
+            if winner == true
+                @board = Board.new
+            else
+                puts"continue this game"
+            end
         end
-        
     end
 end

@@ -25,6 +25,11 @@ class Board
 
     def full?
         @board.all? { |element| element != "" }
+        return true
+    end
+
+    def no_empty_slots?
+        @board.none? { |element| element == "" }
     end
 
 
